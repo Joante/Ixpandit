@@ -13,3 +13,5 @@ Route::get('/', function (Request $request) {
 });
 
 Route::get('/{nombre}', 'BuscadorController@index' );
+
+Route::get('details/{nombre}', 'DetallesController@index')->name('details');

@@ -16,5 +16,29 @@
 
 </div>
 
-
+@isset($pokemons)
+	<table class="table table-striped">
+		<thead>
+	    	<th>Nombre</th>
+	        <th>Imagen</th>
+	        <th>Tipo</th> 
+	    </thead>
+	    <tbody>
+	    	@foreach ($pokemons as $pokemon)
+		        <tr>
+		            <td><a href ="{{ route('details', ['nombre' => $pokemon['nombre'] ]) }}"> {{ $pokemon['nombre'] }}</a></td>
+		            <td><img alt="User Pic" src="{{ $pokemon['imagen_front'] }}" class="sprites"></td>				
+		            @foreach ($pokemon['tipo'] as $tipo)
+	              		<td class="tipos"> {{ $tipo->type->name }} </td>
+			        @endforeach
+		    @endforeach
+	    </tbody>
+	</table>
+@endisset
+<style>
+	body {
+        }
+    .tipos{
+    	display: block;	
+    }
 @stop
